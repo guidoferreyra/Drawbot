@@ -1,4 +1,4 @@
-Glyphs-Scripts
+DrawBot-Scripts
 ==============
 
 ## baseDrawer.py
