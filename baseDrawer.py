@@ -17,7 +17,7 @@ baseOvershoot = (baselineOverShoot/10)*2.8346
 xOvershoot = (xHeightOverShoot/10)*2.8346
 
 #Texts
-newPage('A4Landscape')
+page = newPage('A4Landscape')
 font("Menlo")
 fontSize(8)
 
@@ -31,36 +31,31 @@ text("1cm ≈ 100 upm", (30, 30))
 font("Menlo-Bold")
 text("Project Name:", (30, 540))
 text("Style:", (30, 525))
-text("Wheight:", (30, 510))
+text("Weight:", (30, 510))
 text("Date:", (30, 495))
 
+strokeWidth(0.4)
+stroke(0, 0, 0)
+end = width()
 
 #Drawings
-#Baseline
-rect(85, baseline, 730, 0.5)
 
-#AlturaX
-rect(85, baseline+equis, 730, 0.3)
+line((85, baseline), (end-30, baseline))#Baseline
 
-#ascender
-rect(85, baseline+ascendente, 730, 0.3)
+line((85, baseline+equis), (end-30, baseline+equis))#AlturaX
 
-#descender
-rect(85, baseline-descendente, 730, 0.3)
+line((85, baseline+ascendente), (end-30, baseline+ascendente))#ascender
 
-#cap height
-rect(85, baseline+mayusculas, 730, 0.3)
+line((85, baseline-descendente), (end-30, baseline-descendente))#descender
 
-#BaselineOvershoot
+line((85, baseline+mayusculas), (end-30, baseline+mayusculas))#cap height
+
+
 fill(1, 0, 0, .2)
-rect(85, baseline, 730, -xOvershoot)
+strokeWidth(0)
 
-#xHeightOverShoot
-fill(1, 0, 0, .2)
-rect(85, baseline+equis, 730, xOvershoot)
+rect(85, baseline, end-85-30, -xOvershoot) #BaselineOvershoot
 
-#set a stroke color
-fill(0, 0, 0, 1)
-
+rect(85, baseline+equis, end-85-30, xOvershoot)#xHeightOverShoot
 
 saveImage("~/Desktop/base.pdf")
